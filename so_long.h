@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkhinchi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rkhinchi <rkhinchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:07:34 by rkhinchi          #+#    #+#             */
-/*   Updated: 2023/02/23 18:56:37 by rkhinchi         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:33:32 by rkhinchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@
 # include <stdio.h>
 # include "libft/get_next_line.h"
 # define IMG_SIZE 16
+
+t_bool	start(t_game *game, int argc, char **argv);
+t_bool	possible_win(t_tile **backup);
+int		end_program(t_game *game);
+int		process(int key, t_game *game);
+int	ft_chartable_linecount(char **table);
+void	ft_free_chartable(char **table);
 
 // tipo di blocco(tiles)
 
@@ -58,6 +65,24 @@ typedef struct s_tile
 	struct s_tile	*right;
 }	t_tile;
 
+/* tutti le possibili immagini dei muri
+(block) blocco muro
+gli altri per la posizione 
+*/
+
+typedef struct s_wall_img
+{
+	void	*block;
+	void	*up_left;
+	void	*up;
+	void	*up_right;
+	void	*right;
+	void	*down_right;
+	void	*down;
+	void	*down_left;
+	void	*left;
+}	t_wall_img;
+
 /*informazioni riguardo il giocatore
 (idle_img_0) prima immagine
 (idle_img_1) seconda immagine
@@ -69,16 +94,8 @@ typedef struct s_player
 {
 	t_tile	*tile;
 	void	*current_img;
+	void	*idle_img_0;
 }	t_player;
-
-/* tutti le possibili immagini dei muri
-(block) blocco muro
-gli altri per la posizione 
-*/
-typedef struct s_wall_img
-{
-	void	*block;
-}	t_wall_img;
 
 /* information animazione collezzionabili
 (img_0) primo frame per animare
@@ -86,6 +103,7 @@ typedef struct s_wall_img
 typedef struct s_coll_img
 {
 	void	*current_img;
+	void	*img_0;
 }	t_collect_img;
 
 /*informaioni per gli effetti particellari
@@ -136,6 +154,7 @@ typedef struct s_game
 	void				*door_close_img;
 	int					win;
 	int					death;
+	t_tile				**backup;
 }	t_game;
 
 int		error(char *message);

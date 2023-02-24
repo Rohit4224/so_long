@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cmp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkhinchi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rkhinchi <rkhinchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:37:15 by rkhinchi          #+#    #+#             */
-/*   Updated: 2023/02/23 18:39:40 by rkhinchi         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:11:39 by rkhinchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+#include "get_next_line.h"
+
+int	ft_strlen1(char *str)
 {
-	int i;
+	int	i;
+
 	i = 0;
 
 	while (str[i])
@@ -28,8 +31,8 @@ int	ft_cmp(char *name, char *end)
 	int	name_len;
 	int	ext_len;
 
-	name_len = ft_strlen(name);
-	ext_len = ft_strlen(end);
+	name_len = ft_strlen1(name);
+	ext_len = ft_strlen1(end);
 	if (name_len <= ext_len)
 		return (0);
 	name = name + name_len - ext_len;

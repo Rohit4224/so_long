@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_m.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkhinchi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rkhinchi <rkhinchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:42:38 by rkhinchi          #+#    #+#             */
-/*   Updated: 2023/02/23 19:32:31 by rkhinchi         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:19:09 by rkhinchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 int	file_linecount(char *file)
 {
-	int	linecount;
-	int	fd;
-	int	readcount;
+	int		linecount;
+	int		fd;
+	int		readcount;
 	char	c;
 
 	fd = open(file, O_RDONLY);
@@ -42,7 +42,7 @@ int	file_linecount(char *file)
 char	**alloc_columns(char *file)
 {
 	char	**map;
-	int	line_count;
+	int		line_count;
 
 	line_count = file_linecount(file);
 	if (line_count <= 0)
@@ -56,8 +56,8 @@ char	**alloc_columns(char *file)
 char	**read_m(char *file)
 {
 	char	**map;
-	int	fd;
-	int	i;
+	int		fd;
+	int		i;
 
 	map = alloc_columns(file);
 	fd = open(file, O_RDONLY);
