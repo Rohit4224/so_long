@@ -6,11 +6,22 @@
 /*   By: rkhinchi <rkhinchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:21:24 by rkhinchi          #+#    #+#             */
-/*   Updated: 2023/02/24 19:25:03 by rkhinchi         ###   ########.fr       */
+/*   Updated: 2023/02/25 16:56:22 by rkhinchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
+
+//ritorna quanti caratteri ci sono in <str>
+size_t	ft_strlen(const char *str)
+{
+	size_t	count;
+
+	count = 0;
+	while (str[count] != '\0')
+		count++;
+	return (count);
+}
 
 //controllo se ho un elemento di gioco
 int	valid_char(char c)

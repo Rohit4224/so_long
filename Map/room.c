@@ -6,11 +6,11 @@
 /*   By: rkhinchi <rkhinchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:04:58 by rkhinchi          #+#    #+#             */
-/*   Updated: 2023/02/24 19:42:01 by rkhinchi         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:10:21 by rkhinchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "map.h"
 
 t_tiletype	define_tiletype(char definer);
 

@@ -6,13 +6,13 @@
 /*   By: rkhinchi <rkhinchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:33:15 by rkhinchi          #+#    #+#             */
-/*   Updated: 2023/02/24 18:39:29 by rkhinchi         ###   ########.fr       */
+/*   Updated: 2023/02/25 18:59:06 by rkhinchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	kill_player(t_game *game, t_vector pos)
+void	kill_player(t_game *game)
 {
 	game->player.tile = NULL;
 }
@@ -35,9 +35,9 @@ void	pick_collect(t_game *game, t_tile *tile)
 	game->collects = game->collects - 1;
 }
 
-void	move_to_exit(t_game *game, t_tile *tile)
+void	move_to_exit(t_game *game)
 {
 	remove_player(game);
 	game->collects -= 1;
-	kill_player(game, tile->position);
+	kill_player(game);
 }

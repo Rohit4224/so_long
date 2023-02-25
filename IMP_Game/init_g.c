@@ -6,7 +6,7 @@
 /*   By: rkhinchi <rkhinchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:36:58 by rkhinchi          #+#    #+#             */
-/*   Updated: 2023/02/24 18:11:43 by rkhinchi         ###   ########.fr       */
+/*   Updated: 2023/02/25 19:02:44 by rkhinchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	init_g(t_game *game)
 	}
 }
 
-t_bool	start(t_game *game, int argc, char **argv)
+t_bool	begin(t_game *game, int argc, char **argv)
 {
 	game->collects = 0;
 	game->moves = 0;

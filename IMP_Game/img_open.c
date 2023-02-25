@@ -6,7 +6,7 @@
 /*   By: rkhinchi <rkhinchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 16:44:17 by rkhinchi          #+#    #+#             */
-/*   Updated: 2023/02/24 18:59:33 by rkhinchi         ###   ########.fr       */
+/*   Updated: 2023/02/25 19:08:56 by rkhinchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	open_player_imgs(t_game *game)
 static void	open_collect_imgs(t_game *game)
 {
 	game->collects_imgs.img_0 = mlx_xpm_file_to_image(game->mlx,
-			"sprites/collect/plant_03.xpm",
+			"sprites/collect/princess_03.xpm",
 			&game->img_size.x, &game->img_size.y);
 	game->collects_imgs.current_img = game->collects_imgs.img_0;
 }

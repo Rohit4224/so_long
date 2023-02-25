@@ -6,66 +6,106 @@
 /*   By: rkhinchi <rkhinchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:55:01 by rkhinchi          #+#    #+#             */
-/*   Updated: 2023/02/24 19:06:47 by rkhinchi         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:18:43 by rkhinchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+//controlla se line da errori
+//misura la lunghezza della linea fino a '\n'
+int	ft_linelen(char *line)
 {
-	size_t	y;
+	int	i;
 
-	y = 0;
-	while (s[y] != '\0')
+	if (line == 0)
+		return (-1);
+	i = 0;
+	while (line[i] != '\0')
 	{
-		y++;
+		if (line[i] == '\n')
+			return (i);
+		i++;
 	}
-	return (y);
+	return (-1);
 }
 
-char	*ft_strjoin(char *s1, char *b)
+//crea un malloc lungo linelen
+//metto in line readbuff
+//ritorno line
+char	*ft_getline(int len, char *read)
 {
-	size_t	i;
-	char	*str;
-	size_t	j;
+	char	*line;
+	int		i;
 
-	if (s1 == NULL)
+	line = malloc(len + 1);
+	i = 0;
+	while (i < len)
 	{
-		s1 = (char *)malloc(1 * sizeof(char));
-		s1[0] = '\0';
+		line[i] = read[i];
+		i++;
 	}
-	if (s1 == NULL || b == NULL)
-		return (NULL);
-	str = malloc((ft_strlen(s1) + ft_strlen(b) + 1) * sizeof(char));
-	if (str == NULL)
-		return (NULL);
-	i = -1;
-	j = 0;
-	if (s1 != NULL)
-		while (s1[++i] != '\0')
-			str[i] = s1[i];
-	while (b[j] != '\0')
-		str[i++] = b[j++];
-	str[ft_strlen(s1) + ft_strlen(b)] = '\0';
-	free(s1);
-	return (str);
+	line[i] = '\0';
+	return (line);
 }
 
-char	*ft_strchr(char *t, int c)
+//controlla errori
+//togli bit allocati con malloc
+//ciclo e alloco in output i bit successivi a quelli letti
+//libero read e retituisco l'output
+char	*ft_clearline(int len, char *read)
 {
-	int	u;
+	char	*output;
+	int		i;
 
-	u = 0;
-	if (t == NULL)
-		return (0);
-	if (c == '\0')
-		return ((char *)&t[ft_strlen(t)]);
-	while (t[u] != '\0')
+	if (read == NULL || (ft_strlen1(read) - len + 1) == 0)
+		return (NULL);
+	output = malloc(ft_strlen1(read) - len + 1);
+	i = 0;
+	while (read[len + i] != '\0')
 	{
-		if (t[u] == (char)c)
-			return ((char *)&t[u]);
-		u++;
+		output[i] = read[len + i];
+		i++;
 	}
-	return (0);
+	output[i] = '\0';
+	free(read);
+	return (output);
+}
+
+//leggi
+
+//inizzializza newread con BUFFER_SIZE byte
+///mette dentro count BUFFER_SIZE byte di newread
+//somma alla vecchia lettura count + il carattere nullo
+//mette in output la seguente oldread per la sua lunghezza totale
+//mette in output tutte le righe
+//libera oldread
+//mette il oldread tutta la lettura
+//ritorna la lunghezza count
+int	ft_newread(int fd, char **oldread)
+{
+	int		count;
+	char	newread[BUFFER_SIZE + 1];
+	char	*output;
+	int		i;
+	int		new_i;
+
+	count = read(fd, newread, BUFFER_SIZE);
+	newread[count] = '\0';
+	output = malloc(ft_strlen1(*oldread) + count + 1);
+	if (output == NULL)
+		return (-1);
+	i = 0;
+	while (oldread[0][i] != '\0')
+	{
+		output[i] = oldread[0][i];
+		i++;
+	}
+	new_i = 0;
+	while (newread[new_i] != '\0')
+		output[i++] = newread[new_i++];
+	output[i] = '\0';
+	free(*oldread);
+	*oldread = output;
+	return (count);
 }

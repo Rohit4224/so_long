@@ -6,7 +6,7 @@
 /*   By: rkhinchi <rkhinchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:07:34 by rkhinchi          #+#    #+#             */
-/*   Updated: 2023/02/24 19:33:32 by rkhinchi         ###   ########.fr       */
+/*   Updated: 2023/02/25 20:15:53 by rkhinchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,6 @@
 # include <stdio.h>
 # include "libft/get_next_line.h"
 # define IMG_SIZE 16
-
-t_bool	start(t_game *game, int argc, char **argv);
-t_bool	possible_win(t_tile **backup);
-int		end_program(t_game *game);
-int		process(int key, t_game *game);
-int	ft_chartable_linecount(char **table);
-void	ft_free_chartable(char **table);
-
-// tipo di blocco(tiles)
 
 typedef enum e_bool
 {
@@ -38,6 +29,8 @@ typedef struct s_vector
 	int	x;
 	int	y;
 }	t_vector;
+
+// tipo di blocco(tiles)
 
 typedef enum e_tiletype
 {
@@ -157,10 +150,6 @@ typedef struct s_game
 	t_tile				**backup;
 }	t_game;
 
-int		error(char *message);
-void	*null_error(char *message);
-void	print_warning(char *message);
-
 enum	e_keycode
 {
 	KEY_UP = 119,
@@ -170,5 +159,21 @@ enum	e_keycode
 	RESET = 114,
 	ESC = 65307,
 };
+
+int		error(char *message);
+void	*null_error(char *message);
+void	print_warning(char *message);
+
+t_bool	begin(t_game *game, int argc, char **argv);
+t_bool	possible_win(t_tile **backup);
+
+int		end_program(t_game *game);
+int		process(int key, t_game *game);
+int		ft_chartable_linecount(char **table);
+void	ft_free_chartable(char **table);
+
+int		fill_in(t_game *game);
+void	furnish(t_game game);
+void	draw_wall(t_tile tile, t_game game, t_vector pos);
 
 #endif

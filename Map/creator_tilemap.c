@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   creator_tilemap.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkhinchi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rkhinchi <rkhinchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:49:10 by rkhinchi          #+#    #+#             */
-/*   Updated: 2023/02/24 15:04:21 by rkhinchi         ###   ########.fr       */
+/*   Updated: 2023/02/25 16:51:07 by rkhinchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	setup_tile(t_tile **tilemap, int x, int y)
 		tilemap[y][x].right = &tilemap[y][x + 1];
 }
 
-void	set_gamevars(t_tile *tile, t_game *game, char c)
+void	set_gamevars(t_tile *tile, t_game *game)
 {
 	if (tile->type == PLAYER)
 		game->player.tile = tile;
@@ -82,7 +82,7 @@ t_tile	**create_tilemap(char **map, t_game *game)
 		{
 			tilemap[y][x].type = define_tiletype(map[y][x]);
 			setup_tile(tilemap, x, y);
-			set_gamevars(&tilemap[y][x], game, map[y][x]);
+			set_gamevars(&tilemap[y][x], game);
 			x++;
 		}
 		tilemap[y][x].type = '\0';
