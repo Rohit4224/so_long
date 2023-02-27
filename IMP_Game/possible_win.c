@@ -6,7 +6,7 @@
 /*   By: rkhinchi <rkhinchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:46:50 by rkhinchi          #+#    #+#             */
-/*   Updated: 2023/02/25 18:59:10 by rkhinchi         ###   ########.fr       */
+/*   Updated: 2023/02/27 18:33:49 by rkhinchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	mover(int x, int y, t_tile **g);
 
 void	radar(int x, int y, t_tile **g)
 {
-	if (g[y][x + 1].type == EMPTY || g[y][x + 1].type == EXIT \
-	|| g[y][x + 1].type == COLLECTABLE)
+	if (g[y][x + 1].type == EMPTY || g[y][x + 1].type == COLLECTABLE
+			|| g[y + 1][x].type == EXIT)
 	{
 		g[y][x + 1].type = WALL;
 		mover(x + 1, y, g);
 	}
-	if (g[y][x - 1].type == EMPTY || g[y][x - 1].type == EXIT \
-	|| g[y][x - 1].type == COLLECTABLE)
+	if (g[y][x - 1].type == EMPTY || g[y][x - 1].type == COLLECTABLE
+			|| g[y + 1][x].type == EXIT)
 	{		
 		g[y][x - 1].type = WALL;
 		mover(x - 1, y, g);
@@ -32,14 +32,14 @@ void	radar(int x, int y, t_tile **g)
 
 void	mover(int x, int y, t_tile **g)
 {
-	if (g[y + 1][x].type == EMPTY || g[y + 1][x].type == EXIT \
-	|| g[y + 1][x].type == COLLECTABLE)
+	if (g[y + 1][x].type == EMPTY || g[y + 1][x].type == COLLECTABLE
+			|| g[y + 1][x].type == EXIT)
 	{
 		g[y + 1][x].type = WALL;
 		mover(x, y + 1, g);
 	}
-	if (g[y - 1][x].type == EMPTY || g[y - 1][x].type == EXIT \
-	|| g[y - 1][x].type == COLLECTABLE)
+	if (g[y - 1][x].type == EMPTY || g[y - 1][x].type == COLLECTABLE
+			|| g[y + 1][x].type == EXIT)
 	{
 		g[y - 1][x].type = WALL;
 		mover(x, y - 1, g);
@@ -55,7 +55,7 @@ t_bool	ft_while(int x, int y, t_tile **g)
 		x = 1;
 		while (g[y][x].type != '\0')
 		{
-			if (g[y][x].type == 'E' || g[y][x].type == 'C')
+			if (g[y][x].type == 'C' || g[y][x].type == 'E')
 				return (FALSE);
 			x++;
 		}

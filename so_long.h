@@ -6,7 +6,7 @@
 /*   By: rkhinchi <rkhinchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:07:34 by rkhinchi          #+#    #+#             */
-/*   Updated: 2023/02/25 20:15:53 by rkhinchi         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:39:34 by rkhinchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,8 @@ typedef struct s_player
 	void	*idle_img_0;
 }	t_player;
 
-/* information animazione collezzionabili
-(img_0) primo frame per animare
-(img_1) secondo frame per animare*/
+/* information  collezzionabili */
+
 typedef struct s_coll_img
 {
 	void	*current_img;
@@ -110,6 +109,7 @@ typedef struct s_coll_img
 	int			counter;
 }	t_effect;
 */
+
 /* tutte le informazioni per l'avvio del gioco
 (mlx) puntatore minilib
 (window) finestra di gioco
@@ -127,9 +127,8 @@ typedef struct s_coll_img
 (door_open_image) animazione apertura porta
 (door_close_img) immagine chiusura porta
 (effect) effetti
-(red_panel) effetto schermo rosso
-(white_panel) effetto schermo bianco
 */
+
 typedef struct s_game
 {
 	void				*mlx;
@@ -145,8 +144,6 @@ typedef struct s_game
 	t_collect_img		collects_imgs;
 	void				*door_open_img;
 	void				*door_close_img;
-	int					win;
-	int					death;
 	t_tile				**backup;
 }	t_game;
 

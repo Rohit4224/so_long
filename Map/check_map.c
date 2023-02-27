@@ -6,7 +6,7 @@
 /*   By: rkhinchi <rkhinchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:12:04 by rkhinchi          #+#    #+#             */
-/*   Updated: 2023/02/24 19:20:37 by rkhinchi         ###   ########.fr       */
+/*   Updated: 2023/02/27 18:38:17 by rkhinchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ static int	checks(char **map, t_mapcheckerdata *data)
 		return (error("must be only one player 'P'"));
 	if (valid_uniquechar(map[y][x], 'E', &data->b_exit) == FALSE)
 		return (error("must be only one exit 'E'"));
-	if (map[y][x] == 'E')
-		data->b_exit = TRUE;
 	if (valid_border(map[y][x], data->point, data->size) == FALSE)
 		return (error("map must be sourrended by walls '1'"));
 	if (map[y][x] == 'C')
@@ -105,4 +103,3 @@ int	valid_map(char **map)
 		valid = error("there must be one 'P' and 'E', and at least one 'C'");
 	return (valid);
 }
-

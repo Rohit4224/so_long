@@ -6,13 +6,13 @@
 #    By: rkhinchi <rkhinchi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/25 16:01:43 by rkhinchi          #+#    #+#              #
-#    Updated: 2023/02/25 19:07:25 by rkhinchi         ###   ########.fr        #
+#    Updated: 2023/02/27 15:13:12 by rkhinchi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        := so_long
 CC        := gcc
-FLAGS    := -Wall -Wextra -Werror
+FLAGS    := -g -Wall -Wextra -Werror
 
 SRCS        :=      Map/check_map01.c \
                           Map/read_m.c \

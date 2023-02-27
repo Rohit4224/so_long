@@ -6,7 +6,7 @@
 /*   By: rkhinchi <rkhinchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:42:38 by rkhinchi          #+#    #+#             */
-/*   Updated: 2023/02/25 16:53:31 by rkhinchi         ###   ########.fr       */
+/*   Updated: 2023/02/27 19:15:36 by rkhinchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ char	**read_m(char *file)
 
 	map = alloc_columns(file);
 	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		return (NULL);
 	i = 0;
 	while (get_next_line(fd, &map[i]) != '\0')
 	{

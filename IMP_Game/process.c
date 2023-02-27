@@ -6,7 +6,7 @@
 /*   By: rkhinchi <rkhinchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:27:05 by rkhinchi          #+#    #+#             */
-/*   Updated: 2023/02/25 18:59:12 by rkhinchi         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:43:13 by rkhinchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_bool	move_to(t_game *game, t_tile *tile)
 		move_to_empty(game, tile);
 	else if (tile->type == COLLECTABLE)
 		pick_collect(game, tile);
-	else if (tile->type == EXIT && game->collects <= 0)
+	else if (tile->type == EXIT && game->collects == 0)
 		move_to_exit(game);
 	return (TRUE);
 }
